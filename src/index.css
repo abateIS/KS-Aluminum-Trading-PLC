@@ -1923,7 +1923,7 @@ button {
 .color-name {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ffe600;
+  color: var(--primary);
 }
 
 /* ── Divider ── */
@@ -2017,7 +2017,7 @@ button {
   align-items: flex-start;
   gap: 0.5rem;
   font-size: 1.05rem;
-  color: #ffe600;
+  color: var(--primary);
   font-weight: 700;
   line-height: 1.6;
 }
