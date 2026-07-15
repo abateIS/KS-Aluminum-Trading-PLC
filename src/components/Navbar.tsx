@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Languages } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import logoImg from '../assets/logo.png';
+import usaFlag from '../assets/usa.png';
+import ethFlag from '../assets/ethiopia.png';
 import { useLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
@@ -76,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo, activeSection }) => 
                         title={lang === 'en' ? 'Switch to Amharic' : 'Switch to English'}
                         aria-label="Toggle language"
                     >
-                        <Languages size={15} />
+                        <img src={lang === 'en' ? ethFlag : usaFlag} alt="" style={{ width: '18px', height: '12px', objectFit: 'cover', borderRadius: '1px' }} />
                         <span>{lang === 'en' ? 'አማ' : 'EN'}</span>
                     </button>
 
@@ -141,8 +143,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo, activeSection }) => 
                             >
                                 {t('svc_cta_btn')}
                             </button>
-                            <button className="lang-toggle-btn" onClick={toggleLang}>
-                                <Languages size={15} />
+                            <button className="lang-toggle-btn" onClick={toggleLang} style={{ flex: 1 }}>
+                                <img src={lang === 'en' ? ethFlag : usaFlag} alt="" style={{ width: '18px', height: '12px', objectFit: 'cover', borderRadius: '1px' }} />
                                 <span>{lang === 'en' ? 'አማ' : 'EN'}</span>
                             </button>
                         </li>

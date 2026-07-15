@@ -111,7 +111,7 @@ const en: Record<string, string> = {
     footer_contact: 'Contact',
     footer_address: 'Bishoftu, Oromia, Ethiopia',
     footer_rights: 'All rights reserved.',
-    footer_built: 'Built with ❤ in Ethiopia.',
+    footer_built: 'Built with ❤ by Atote Tech Solution',
 
     // AI Assistant
     ai_greeting: 'Hello! 👋 I\'m KS Aluminium\'s virtual assistant. Ask me about our products, location, or how to contact us.',
@@ -203,7 +203,7 @@ const am: Record<string, string> = {
     footer_contact: 'ያግኙን',
     footer_address: 'ቢሾፍቱ፣ ኦሮሚያ፣ ኢትዮጵያ',
     footer_rights: 'መብቶች ሁሉ የተጠበቁ ናቸው።',
-    footer_built: 'ከኢትዮጵያ ❤ ።',
+    footer_built: 'በ አቶቴ ቴክ ሶሉሽን የተሰራ ❤',
 
     // AI Assistant
     ai_greeting: 'ሰላም! 👋 እኔ የKS Aluminium ምናባዊ ረዳት ነኝ። ምርቶቻችን፣ ቦታ ወይም አድራሻ ስለሚፈልጉ ይጠይቁኝ።',
