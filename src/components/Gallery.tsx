@@ -86,6 +86,30 @@ const galleryItems: GalleryItem[] = [
         tag: 'Office',
     },
     {
+        id: 'g10',
+        type: 'photo',
+        src: '/gallery/Curtain wall.webp',
+        thumb: '/gallery/Curtain wall.webp',
+        caption: 'Curtain Wall Installation Project',
+        tag: 'Projects',
+    },
+    {
+        id: 'g11',
+        type: 'photo',
+        src: '/gallery/Composite Cladding.jpg',
+        thumb: '/gallery/Composite Cladding.jpg',
+        caption: 'Composite Panel Cladding Works',
+        tag: 'Projects',
+    },
+    {
+        id: 'g12',
+        type: 'photo',
+        src: '/gallery/Aluminum extrusion.jpeg',
+        thumb: '/gallery/Aluminum extrusion.jpeg',
+        caption: 'Aluminium Extrusion Fabrication',
+        tag: 'Projects',
+    },
+    {
         id: 'v1',
         type: 'video',
         src: '',
@@ -103,7 +127,7 @@ const galleryItems: GalleryItem[] = [
     },
 ];
 
-const tags = ['All', 'Glazing', 'Profiles', 'Cladding', 'ACP', 'Handrails', 'Glass', 'Workshop', 'Office'];
+const tags = ['All', 'Glazing', 'Profiles', 'Cladding', 'ACP', 'Handrails', 'Glass', 'Workshop', 'Office', 'Projects'];
 
 export const Gallery: React.FC = () => {
     const [activeTag, setActiveTag] = useState('All');

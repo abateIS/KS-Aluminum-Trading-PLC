@@ -11,12 +11,6 @@ import { Footer } from './components/Footer';
 import { AIAssistant } from './components/AIAssistant';
 import './App.css';
 
-// SVG Helper for teaser placeholders
-const getTeaserPlaceholderSvg = (title: string) => {
-  const t = encodeURIComponent(title);
-  return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%25" height="100%25"><rect width="100%25" height="100%25" fill="%230b1c3a"/><rect x="20" y="20" width="560" height="360" rx="6" fill="none" stroke="%23e5c158" stroke-width="2" opacity="0.1"/><circle cx="300" cy="180" r="40" fill="%23e5c158" fill-opacity="0.05" stroke="%23e5c158" stroke-width="2" stroke-dasharray="6,6"/><text x="300" y="260" font-family="system-ui, sans-serif" font-size="20" fill="%23e5c158" font-weight="600" text-anchor="middle">${t}</text></svg>`;
-};
-
 function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
 
@@ -38,14 +32,14 @@ function App() {
               <span className="section-subtitle">Who We Are</span>
               <h2 className="section-title text-left">Pioneering Architectural Framing & Cladding</h2>
               <p className="teaser-paragraph" style={{ marginBottom: '1.5rem', lineHeight: '1.7', color: 'var(--text-body)' }}>
-                <strong>KS Aluminum Work and Granite Solution PLC</strong> is a leading specialist in the supply, fabrication, and installation of superior architectural aluminum profiles and glass products in Ethiopia.
+                <strong>KS Aluminum Works And Trade PLC</strong> is a leading specialist in the supply, fabrication, and installation of superior architectural aluminum profiles and glass products in Ethiopia.
               </p>
               <button onClick={() => handlePageChange('about')} className="btn btn-primary">
                 Read Full Profile & History →
               </button>
             </div>
             <div className="teaser-visual">
-              <img src={getTeaserPlaceholderSvg('KS Aluminum Works')} style={{ borderRadius: 'var(--radius-md)', width: '100%', border: '1px solid rgba(229, 193, 88, 0.2)' }} alt="About Preview" />
+              <img src="/gallery/aluminum-framing-3-1024x352.jpg" style={{ borderRadius: 'var(--radius-md)', width: '100%', objectFit: 'cover', border: '1px solid rgba(229, 193, 88, 0.2)' }} alt="KS Aluminum Framing Works" />
             </div>
           </div>
         </div>
