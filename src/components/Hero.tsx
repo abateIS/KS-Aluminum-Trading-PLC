@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Compass, Shield, Award } from 'lucide-react';
+import { ArrowRight, Compass, Award } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface HeroProps {
@@ -44,25 +44,6 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                             {t('hero_cta_gallery')}
                             <Compass size={18} />
                         </button>
-                    </div>
-
-                    {/* Micro-Features grid */}
-                    <div className="hero-features">
-                        <div className="hero-feature-card glass">
-                            <Shield className="feature-icon" size={24} />
-                            <div>
-                                <h4>Premium Imports</h4>
-                                <p>Anodized &amp; Electrophoresis finishes</p>
-                            </div>
-                        </div>
-
-                        <div className="hero-feature-card glass">
-                            <Compass className="feature-icon" size={24} />
-                            <div>
-                                <h4>Local Flexibility</h4>
-                                <p>Wide array of structural profiles</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

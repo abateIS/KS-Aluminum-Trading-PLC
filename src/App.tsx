@@ -28,7 +28,7 @@ function App() {
   // Teasers Render function for Homepage
   const renderHomeContent = () => (
     <>
-      <Hero onScrollTo={(sec) => handlePageChange(sec === 'contact' ? 'contact' : 'home')} />
+      <Hero onScrollTo={handlePageChange} />
 
       {/* About Us Teaser Section */}
       <section className="section section-about-teaser section-bg-alt">
@@ -37,7 +37,7 @@ function App() {
             <div className="teaser-content">
               <span className="section-subtitle">Who We Are</span>
               <h2 className="section-title text-left">Pioneering Architectural Framing & Cladding</h2>
-              <p className="teaser-paragraph" style={{ marginBottom: '1.5rem', lineHeight: '1.7', color: '#cbd5e0' }}>
+              <p className="teaser-paragraph" style={{ marginBottom: '1.5rem', lineHeight: '1.7', color: 'var(--text-body)' }}>
                 <strong>KS Aluminum Work and Granite Solution PLC</strong> is a leading specialist in the supply, fabrication, and installation of superior architectural aluminum profiles and glass products in Ethiopia.
               </p>
               <button onClick={() => handlePageChange('about')} className="btn btn-primary">
@@ -106,9 +106,9 @@ function App() {
             <h2 className="section-title">Featured Project Gallery</h2>
           </div>
           <div className="grid-3" style={{ gap: '1.5rem', marginTop: '2.5rem' }}>
-            <img src={getTeaserPlaceholderSvg('Curtain Wall Project')} style={{ borderRadius: 'var(--radius-md)', width: '100%', border: '1px solid rgba(255,255,255,0.05)' }} alt="Project A" />
-            <img src={getTeaserPlaceholderSvg('Composite Cladding')} style={{ borderRadius: 'var(--radius-md)', width: '100%', border: '1px solid rgba(255,255,255,0.05)' }} alt="Project B" />
-            <img src={getTeaserPlaceholderSvg('Aluminium Extrusion')} style={{ borderRadius: 'var(--radius-md)', width: '100%', border: '1px solid rgba(255,255,255,0.05)' }} alt="Project C" />
+            <img src="/gallery/Curtain wall.webp" style={{ borderRadius: 'var(--radius-md)', width: '100%', height: '240px', objectFit: 'cover', border: '1px solid rgba(229,193,88,0.2)' }} alt="Curtain Wall Project" />
+            <img src="/gallery/Composite Cladding.jpg" style={{ borderRadius: 'var(--radius-md)', width: '100%', height: '240px', objectFit: 'cover', border: '1px solid rgba(229,193,88,0.2)' }} alt="Composite Cladding" />
+            <img src="/gallery/Aluminum extrusion.jpeg" style={{ borderRadius: 'var(--radius-md)', width: '100%', height: '240px', objectFit: 'cover', border: '1px solid rgba(229,193,88,0.2)' }} alt="Aluminium Extrusion" />
           </div>
           <div className="flex justify-center" style={{ marginTop: '2.5rem' }}>
             <button onClick={() => handlePageChange('gallery')} className="btn btn-primary">
