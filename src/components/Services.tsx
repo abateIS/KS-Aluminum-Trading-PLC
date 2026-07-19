@@ -1,59 +1,68 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
-interface ProfileGroup {
-    flag: string;
-    origin: string;
-    label: string;
-    colors: string[];
-}
-
-interface ServiceGroup {
-    icon: string;
-    label: string;
+interface ServiceCategory {
+    id: string;
+    badge: string;
+    titleKey: string;
+    image: string;
     items: string[];
 }
 
-const profiles: ProfileGroup[] = [
+const serviceCategories: ServiceCategory[] = [
     {
-        flag: '🇨🇳',
-        origin: 'Import',
-        label: 'Import Aluminium Profile',
-        colors: ['Black', 'Silver', 'Bronze', 'Coffee Electrophoresis Champagne'],
+        id: 'import-profiles',
+        badge: '🇨🇳',
+        titleKey: 'svc_cat_import',
+        image: '/Service page images/Aluminum Profioles.jpg',
+        items: [
+            'Premium electro-colored champagne finishes',
+            'Sleek anodized black and silver options',
+            'Rich bronze electrophoresis coating',
+            'High weatherability structural profiles',
+        ],
     },
     {
-        flag: '🇪🇹',
-        origin: 'Local',
-        label: 'Local Aluminium Profile',
-        colors: ['Black', 'Grey', 'Ivory', 'Bronze', 'Mat Coffee', 'White', 'Coffee Shine', 'Silver'],
+        id: 'local-profiles',
+        badge: '🇪🇹',
+        titleKey: 'svc_cat_local',
+        image: '/Service page images/Local Aluminum.jpeg',
+        items: [
+            'Locally extruded matte white & grey',
+            'Anodized silver and bronze finishes',
+            'Polished coffee shine & ivory shades',
+            'Flexible custom architectural sections',
+        ],
     },
-];
-
-const services: ServiceGroup[] = [
     {
-        icon: '💎',
-        label: 'Glasses',
+        id: 'glass-works',
+        badge: '💎',
+        titleKey: 'svc_cat_glass',
+        image: '/Service page images/Structural & Decorative Glass.webp',
         items: [
             'Clear Glass: 4mm, 5mm, 6mm, 10mm & 12mm',
-            'Tinted Grey Glass: 5mm',
-            'Dark Grey Reflector: 5mm',
-            'Bronze/Tea Glass: 5mm, 6mm',
-            'Light Blue Reflective option: 5mm',
-            'Premium Ocean Blue Glass: 5mm',
+            'Grey and dark grey reflective options: 5mm',
+            'Bronze / tea colored glass: 5mm & 6mm',
+            'Ocean blue high performance glass: 5mm',
         ],
     },
     {
-        icon: '🧱',
-        label: 'Aluminium Composite Panel',
+        id: 'composite-panels',
+        badge: '🧱',
+        titleKey: 'svc_cat_acp',
+        image: '/Service page images/Aluminium Composite Panel.jpg',
         items: [
             'Double F Cladding: Premium Structural Grade',
-            'Single F Cladding: Decorative Facades',
+            'Single F Cladding: Decorative Interior Facades',
             'Weatherproof PE & Fire-Retardant Cores',
+            'UV-resistant coil coating finishes',
         ],
     },
     {
-        icon: '⚙️',
-        label: 'Aluminium Accessories',
+        id: 'hardware-accessories',
+        badge: '⚙️',
+        titleKey: 'svc_cat_acc',
+        image: '/Service page images/Aluminium Accessories.webp',
         items: [
             'Heavy-Duty Hinges, Pivots & Stays',
             'Friction Stays & Lock Handles',
@@ -62,18 +71,22 @@ const services: ServiceGroup[] = [
         ],
     },
     {
-        icon: '🚧',
-        label: 'Handrails',
+        id: 'handrails-balustrades',
+        badge: '🚧',
+        titleKey: 'svc_cat_rail',
+        image: '/Service page images/Handrails.webp',
         items: [
             'Glass-Secured Architectural Balustrades',
             'Structural High-Precision Stairway Rails',
-            'Balcony Safety Rallings & Frames',
+            'Balcony Safety Railings & Frames',
             'Corrosion-Resistant Floor Mount Plates',
         ],
     },
     {
-        icon: '🔩',
-        label: 'Stainless Steel',
+        id: 'stainless-steel',
+        badge: '🔩',
+        titleKey: 'svc_cat_steel',
+        image: '/Service page images/Stainless Steel.jpg',
         items: [
             'Grade 304 & 316 Premium Profiles',
             'Satin Brushed & Polished Chrome Tubes',
@@ -84,18 +97,12 @@ const services: ServiceGroup[] = [
 ];
 
 export const Services: React.FC = () => {
-    const [hoveredProfile, setHoveredProfile] = useState<number | null>(null);
-    const [hoveredService, setHoveredService] = useState<number | null>(null);
     const { t } = useLanguage();
-
-    const profilesTranslated = [
-        { ...profiles[0], origin: t('svc_import_origin') },
-        { ...profiles[1], origin: t('svc_local_origin') },
-    ];
+    const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
     // Custom L-Angle Aluminum Profile Indicator SVG
     const renderLAngleBullet = () => (
-        <svg viewBox="0 0 12 12" width="10" height="10" style={{ flexShrink: 0, marginRight: '10px', marginTop: '6px', color: 'var(--accent-light)' }} aria-hidden="true">
+        <svg viewBox="0 0 12 12" width="10" height="10" style={{ flexShrink: 0, marginRight: '10px', marginTop: '6px', color: 'var(--accent)' }} aria-hidden="true">
             <path d="M2,2 L10,2 L10,4 L4,4 L4,10 L2,10 Z" fill="currentColor" />
         </svg>
     );
@@ -119,70 +126,50 @@ export const Services: React.FC = () => {
                     <div className="services-title-line" />
                 </div>
 
-                {/* ── Aluminium Profiles ─────────────────────────────────────── */}
-                <div className="profiles-grid">
-                    {profilesTranslated.map((group, idx) => (
-                        <div
-                            key={idx}
-                            className={`profile-card${hoveredProfile === idx ? ' hovered' : ''}`}
-                            onMouseEnter={() => setHoveredProfile(idx)}
-                            onMouseLeave={() => setHoveredProfile(null)}
-                        >
-                            {/* Card glow ring */}
-                            <div className="profile-card-glow" />
+                {/* ── 7 Vertical Scrolling Service Sections ───────────────────── */}
+                <div className="vertical-services-list">
+                    {serviceCategories.map((cat, idx) => {
+                        const isEven = idx % 2 === 0;
+                        return (
+                            <div
+                                key={cat.id}
+                                className={`service-row ${isEven ? 'row-even' : 'row-odd'} ${hoveredIdx === idx ? 'focused' : ''}`}
+                                onMouseEnter={() => setHoveredIdx(idx)}
+                                onMouseLeave={() => setHoveredIdx(null)}
+                            >
+                                {/* Text Details Pane */}
+                                <div className="service-details-pane glass animate-fadeIn">
+                                    <div className="service-pane-header">
+                                        <span className="service-pane-badge">{cat.badge}</span>
+                                        <h3 className="service-pane-title">{t(cat.titleKey)}</h3>
+                                    </div>
+                                    <ul className="service-specs-list">
+                                        {cat.items.map((item, ii) => (
+                                            <li key={ii} className="service-spec-item">
+                                                {renderLAngleBullet()}
+                                                <span className="color-name">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
 
-                            <div className="profile-card-header">
-                                <span className="profile-flag">{group.flag}</span>
-                                <div>
-                                    <span className="profile-origin-badge">{group.origin}</span>
-                                    <h3 className="profile-card-title">{group.label}</h3>
+                                {/* Graphic Frame Pane */}
+                                <div className="service-graphic-pane">
+                                    <div className="image-frame-container">
+                                        <div className="frame-glow-ring" />
+                                        <img
+                                            src={cat.image}
+                                            alt={t(cat.titleKey)}
+                                            className="service-row-image"
+                                            loading="lazy"
+                                        />
+                                        <div className="image-frame-border" />
+                                        <span className="image-caption-tag">{t(cat.titleKey)}</span>
+                                    </div>
                                 </div>
                             </div>
-
-                            <ul className="color-list">
-                                {group.colors.map((color, ci) => (
-                                    <li key={ci} className="color-list-item">
-                                        {renderLAngleBullet()}
-                                        <span className="color-name">{color}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Divider */}
-                <div className="services-divider">
-                    <span className="divider-line" />
-                    <span className="divider-icon">✦</span>
-                    <span className="divider-line" />
-                </div>
-
-                {/* ── Materials & Services Grid ───────────────────────────────── */}
-                <div className="materials-grid">
-                    {services.map((svc, idx) => (
-                        <div
-                            key={idx}
-                            className={`material-card ${hoveredService === idx ? 'hovered' : ''}`}
-                            onMouseEnter={() => setHoveredService(idx)}
-                            onMouseLeave={() => setHoveredService(null)}
-                        >
-                            <div className="material-card-glow" />
-                            <div className="material-card-header">
-                                <span className="material-diamond">{svc.icon}</span>
-                                <h3 className="material-label">{svc.label}</h3>
-                            </div>
-
-                            <ul className="material-items-list">
-                                {svc.items.map((item, ii) => (
-                                    <li key={ii} className="material-item">
-                                        {renderLAngleBullet()}
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 {/* CTA Banner */}
