@@ -3380,3 +3380,337 @@ button {
     font-size: 0.95rem;
   }
 }
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL-REVEAL ANIMATIONS
+═══════════════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.reveal-up {
+  transform: translateY(48px);
+}
+
+.reveal.reveal-left {
+  transform: translateX(-48px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(48px);
+}
+
+.reveal.reveal-scale {
+  transform: scale(0.88);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* stagger delay applied via inline style */
+
+/* ── Home Product Cards ── */
+.home-product-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: default;
+}
+
+.home-product-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(11, 44, 90, 0.18);
+}
+
+/* ── Gallery Teaser Card ── */
+.gallery-teaser-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery-teaser-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(11, 44, 90, 0.15);
+}
+
+.gallery-teaser-label {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-body);
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GALLERY VIDEO HERO
+═══════════════════════════════════════════════════════ */
+.gallery-video-hero {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 3rem;
+  box-shadow: 0 24px 60px rgba(11, 44, 90, 0.25);
+}
+
+.gallery-video-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 20, 53, 0.88) 0%, rgba(5, 20, 53, 0.3) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem 3rem;
+}
+
+.gallery-video-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(229, 193, 88, 0.18);
+  border: 1px solid rgba(229, 193, 88, 0.4);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  width: fit-content;
+  animation: pulse 2s infinite;
+}
+
+.video-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 1.2s infinite;
+}
+
+.gallery-video-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-video-sub {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 540px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HOMEPAGE VIDEO SECTION
+═══════════════════════════════════════════════════════ */
+.home-video-section {
+  padding: 0 !important;
+  position: relative;
+}
+
+.home-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.home-video-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(5, 20, 53, 0.88) 0%, rgba(11, 44, 90, 0.6) 60%, transparent 100%);
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+}
+
+.home-video-inner {
+  max-width: 600px;
+}
+
+.home-video-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  background: rgba(229, 193, 88, 0.12);
+  border: 1px solid rgba(229, 193, 88, 0.3);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+}
+
+.home-video-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  color: var(--text-white);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.home-video-sub {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ABOUT PAGE – ANIMATED STAT CARDS
+═══════════════════════════════════════════════════════ */
+.about-stats-row {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.about-stat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--primary-dark);
+  border: 1px solid rgba(229, 193, 88, 0.25);
+  box-shadow: 0 8px 24px rgba(11, 44, 90, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(229, 193, 88, 0.12);
+}
+
+.about-stat-num {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.about-stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE: VIDEO + STATS + HERO
+═══════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .gallery-video-hero {
+    height: 280px;
+  }
+
+  .gallery-video-overlay {
+    padding: 1.5rem;
+  }
+
+  .gallery-video-title {
+    font-size: 1.3rem;
+  }
+
+  .home-video-wrapper {
+    height: 380px;
+  }
+
+  .home-video-overlay {
+    padding: 2rem;
+  }
+
+  .home-video-title {
+    font-size: 1.6rem;
+  }
+
+  .home-video-sub {
+    font-size: 0.9rem;
+  }
+
+  .about-stats-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .about-stat-num {
+    font-size: 2rem;
+  }
+}

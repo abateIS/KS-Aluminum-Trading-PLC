@@ -1,141 +1,30 @@
 import React, { useState } from 'react';
-import { X, Play, Camera, Video } from 'lucide-react';
-
-type MediaType = 'photo' | 'video';
+import { X, Camera } from 'lucide-react';
 
 interface GalleryItem {
     id: string;
-    type: MediaType;
     src: string;
     thumb: string;
     caption: string;
-    tag: string;
 }
 
 const galleryItems: GalleryItem[] = [
-    {
-        id: 'g1',
-        type: 'photo',
-        src: '/gallery/12.jpg',
-        thumb: '/gallery/12.jpg',
-        caption: 'Window Profile Installation',
-        tag: 'Glazing',
-    },
-    {
-        id: 'g2',
-        type: 'photo',
-        src: '/gallery/13.jpg',
-        thumb: '/gallery/13.jpg',
-        caption: 'Aluminium Architectural Assembly',
-        tag: 'Profiles',
-    },
-    {
-        id: 'g3',
-        type: 'photo',
-        src: '/gallery/14.jpg',
-        thumb: '/gallery/14.jpg',
-        caption: 'Facade Framing & Glazing',
-        tag: 'Cladding',
-    },
-    {
-        id: 'g4',
-        type: 'photo',
-        src: '/gallery/15.jpg',
-        thumb: '/gallery/15.jpg',
-        caption: 'Imported Aluminum Profile Stock',
-        tag: 'Profiles',
-    },
-    {
-        id: 'g5',
-        type: 'photo',
-        src: '/gallery/16.jpg',
-        thumb: '/gallery/16.jpg',
-        caption: 'Precision Profile Fabrication',
-        tag: 'Workshop',
-    },
-    {
-        id: 'g6',
-        type: 'photo',
-        src: '/gallery/17.jpg',
-        thumb: '/gallery/17.jpg',
-        caption: 'Composite Panel Cladding',
-        tag: 'ACP',
-    },
-    {
-        id: 'g7',
-        type: 'photo',
-        src: '/gallery/18.jpg',
-        thumb: '/gallery/18.jpg',
-        caption: 'Polished Handrails Installation',
-        tag: 'Handrails',
-    },
-    {
-        id: 'g8',
-        type: 'photo',
-        src: '/gallery/19.jpg',
-        thumb: '/gallery/19.jpg',
-        caption: 'Structural Glass & Accessories Supply',
-        tag: 'Glass',
-    },
-    {
-        id: 'g9',
-        type: 'photo',
-        src: '/gallery/11.jpg',
-        thumb: '/gallery/11.jpg',
-        caption: 'KS Aluminum Office & Work Area',
-        tag: 'Office',
-    },
-    {
-        id: 'g10',
-        type: 'photo',
-        src: '/gallery/Curtain wall.webp',
-        thumb: '/gallery/Curtain wall.webp',
-        caption: 'Curtain Wall Installation Project',
-        tag: 'Projects',
-    },
-    {
-        id: 'g11',
-        type: 'photo',
-        src: '/gallery/Composite Cladding.jpg',
-        thumb: '/gallery/Composite Cladding.jpg',
-        caption: 'Composite Panel Cladding Works',
-        tag: 'Projects',
-    },
-    {
-        id: 'g12',
-        type: 'photo',
-        src: '/gallery/Aluminum extrusion.jpeg',
-        thumb: '/gallery/Aluminum extrusion.jpeg',
-        caption: 'Aluminium Extrusion Fabrication',
-        tag: 'Projects',
-    },
-    {
-        id: 'v1',
-        type: 'video',
-        src: '',
-        thumb: '/gallery/13.jpg',
-        caption: 'Glass Installation Video',
-        tag: 'Glazing',
-    },
-    {
-        id: 'v2',
-        type: 'video',
-        src: '',
-        thumb: '/gallery/16.jpg',
-        caption: 'Profile Fabrication Video',
-        tag: 'Workshop',
-    },
+    { id: 'g10', src: '/gallery/Curtain wall.webp', thumb: '/gallery/Curtain wall.webp', caption: 'Curtain Wall Installation Project' },
+    { id: 'g11', src: '/gallery/Composite Cladding.jpg', thumb: '/gallery/Composite Cladding.jpg', caption: 'Composite Panel Cladding Works' },
+    { id: 'g12', src: '/gallery/Aluminum extrusion.jpeg', thumb: '/gallery/Aluminum extrusion.jpeg', caption: 'Aluminium Extrusion Fabrication' },
+    { id: 'g1', src: '/gallery/12.jpg', thumb: '/gallery/12.jpg', caption: 'Window Profile Installation' },
+    { id: 'g2', src: '/gallery/13.jpg', thumb: '/gallery/13.jpg', caption: 'Aluminium Architectural Assembly' },
+    { id: 'g3', src: '/gallery/14.jpg', thumb: '/gallery/14.jpg', caption: 'Facade Framing & Glazing' },
+    { id: 'g4', src: '/gallery/15.jpg', thumb: '/gallery/15.jpg', caption: 'Imported Aluminum Profile Stock' },
+    { id: 'g5', src: '/gallery/16.jpg', thumb: '/gallery/16.jpg', caption: 'Precision Profile Fabrication' },
+    { id: 'g6', src: '/gallery/17.jpg', thumb: '/gallery/17.jpg', caption: 'Composite Panel Cladding' },
+    { id: 'g7', src: '/gallery/18.jpg', thumb: '/gallery/18.jpg', caption: 'Polished Handrails Installation' },
+    { id: 'g8', src: '/gallery/19.jpg', thumb: '/gallery/19.jpg', caption: 'Structural Glass & Accessories Supply' },
+    { id: 'g9', src: '/gallery/11.jpg', thumb: '/gallery/11.jpg', caption: 'KS Aluminum Office & Work Area' },
 ];
 
-const tags = ['All', 'Glazing', 'Profiles', 'Cladding', 'ACP', 'Handrails', 'Glass', 'Workshop', 'Office', 'Projects'];
-
 export const Gallery: React.FC = () => {
-    const [activeTag, setActiveTag] = useState('All');
     const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
-
-    const filtered = activeTag === 'All'
-        ? galleryItems
-        : galleryItems.filter(i => i.tag === activeTag);
 
     return (
         <section id="gallery" className="gallery-section">
@@ -152,34 +41,37 @@ export const Gallery: React.FC = () => {
                     <div className="gallery-header-line" />
                 </div>
 
-                {/* Media Type Stats */}
+                {/* ── Hero Video Banner ──────────────────────────────────── */}
+                <div className="gallery-video-hero">
+                    <video
+                        className="gallery-video-el"
+                        src="/gallery/KS Aluminum Video.mp4"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    />
+                    <div className="gallery-video-overlay">
+                        <div className="gallery-video-badge">
+                            <span className="video-badge-dot" />
+                            LIVE — Watch Our Work
+                        </div>
+                        <h3 className="gallery-video-title">KS Aluminum Works &amp; Trade PLC</h3>
+                        <p className="gallery-video-sub">Ethiopia's premier aluminum profiles &amp; glass fabrication partner</p>
+                    </div>
+                </div>
+
+                {/* Photo Count */}
                 <div className="gallery-stats-row">
                     <div className="gallery-stat glass">
                         <Camera size={22} />
-                        <span><strong>{galleryItems.filter(i => i.type === 'photo').length}</strong> Photos</span>
-                    </div>
-                    <div className="gallery-stat glass">
-                        <Video size={22} />
-                        <span><strong>{galleryItems.filter(i => i.type === 'video').length}</strong> Videos</span>
+                        <span><strong>{galleryItems.length}</strong> Photos</span>
                     </div>
                 </div>
 
-                {/* Filter Tags */}
-                <div className="gallery-filter-row">
-                    {tags.map(tag => (
-                        <button
-                            key={tag}
-                            className={`gallery-tag-btn ${activeTag === tag ? 'active' : ''}`}
-                            onClick={() => setActiveTag(tag)}
-                        >
-                            {tag}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Masonry Grid */}
+                {/* ── Flat Masonry Grid ─────────────────────────────────── */}
                 <div className="gallery-grid">
-                    {filtered.map((item, i) => (
+                    {galleryItems.map((item, i) => (
                         <button
                             key={item.id}
                             className={`gallery-item gallery-item--${i % 5 === 0 ? 'wide' : 'normal'}`}
@@ -188,13 +80,7 @@ export const Gallery: React.FC = () => {
                         >
                             <img src={item.thumb} alt={item.caption} className="gallery-item-img" />
                             <div className="gallery-item-overlay">
-                                {item.type === 'video' && (
-                                    <div className="gallery-play-btn">
-                                        <Play size={28} fill="white" />
-                                    </div>
-                                )}
                                 <div className="gallery-item-caption">
-                                    <span className="gallery-item-tag">{item.tag}</span>
                                     <span className="gallery-item-label">{item.caption}</span>
                                 </div>
                             </div>
@@ -202,7 +88,7 @@ export const Gallery: React.FC = () => {
                     ))}
                 </div>
 
-                {/* Upload prompt banner */}
+                {/* CTA Banner */}
                 <div className="gallery-upload-banner glass">
                     <Camera size={28} className="gallery-upload-icon" />
                     <div>
@@ -227,17 +113,8 @@ export const Gallery: React.FC = () => {
                         <X size={30} />
                     </button>
                     <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
-                        {lightboxItem.type === 'photo' ? (
-                            <img src={lightboxItem.src} alt={lightboxItem.caption} className="lightbox-media" />
-                        ) : (
-                            <div className="lightbox-video-placeholder">
-                                <Play size={56} className="lbvp-icon" />
-                                <p>Video: {lightboxItem.caption}</p>
-                                <span>Installation demonstration in progress</span>
-                            </div>
-                        )}
+                        <img src={lightboxItem.src} alt={lightboxItem.caption} className="lightbox-media" />
                         <div className="lightbox-caption">
-                            <span className="lightbox-tag">{lightboxItem.tag}</span>
                             <span className="lightbox-title">{lightboxItem.caption}</span>
                         </div>
                     </div>
