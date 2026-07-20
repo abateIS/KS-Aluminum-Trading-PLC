@@ -47,7 +47,6 @@ export const Gallery: React.FC = () => {
                         className="gallery-video-el"
                         src="/gallery/KS Aluminum Video.mp4"
                         autoPlay
-                        muted
                         loop
                         playsInline
                     />

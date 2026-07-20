@@ -54,6 +54,24 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    const initAudio = () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(v => {
+        v.muted = false;
+        v.play().catch(() => { });
+      });
+    };
+    window.addEventListener('click', initAudio, { once: true });
+    window.addEventListener('touchstart', initAudio, { once: true });
+    window.addEventListener('keydown', initAudio, { once: true });
+    return () => {
+      window.removeEventListener('click', initAudio);
+      window.removeEventListener('touchstart', initAudio);
+      window.removeEventListener('keydown', initAudio);
+    };
+  }, []);
+
   const renderHomeContent = () => (
     <>
       <Hero onScrollTo={handlePageChange} />
@@ -125,7 +143,6 @@ function App() {
             className="home-video-el"
             src="/gallery/KS Aluminum Video.mp4"
             autoPlay
-            muted
             loop
             playsInline
           />
@@ -207,7 +224,7 @@ function App() {
         <main className="main-content" style={{ minHeight: 'calc(100vh - 180px)', paddingTop: '80px' }}>
           {currentPage === 'home' && renderHomeContent()}
           {currentPage === 'about' && <About />}
-          {currentPage === 'products' && <Products />}
+          {currentPage === 'products' && <Products onNavigate={handlePageChange} />}
           {currentPage === 'services' && <Services />}
           {currentPage === 'gallery' && <Gallery />}
           {currentPage === 'contact' && <Contact />}

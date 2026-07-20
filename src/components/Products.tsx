@@ -11,7 +11,11 @@ interface ProductCategory {
     color: string;
 }
 
-export const Products: React.FC = () => {
+interface ProductsProps {
+    onNavigate: (pageId: string) => void;
+}
+
+export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
     const { t } = useLanguage();
     const [activeCategory, setActiveCategory] = useState<string>('import-profile');
 
@@ -185,16 +189,12 @@ export const Products: React.FC = () => {
                             ))}
                         </ul>
 
-                        <a
-                            href="#contact"
+                        <button
                             className="btn btn-primary product-cta-btn"
-                            onClick={e => {
-                                e.preventDefault();
-                                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                            }}
+                            onClick={() => onNavigate('contact')}
                         >
                             {t('prod_contact_us')}
-                        </a>
+                        </button>
                     </div>
                 </div>
 
