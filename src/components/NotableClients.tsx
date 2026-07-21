@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImg from '../assets/logo.png';
 
 const clients = [
     {
@@ -19,36 +20,44 @@ const clients = [
     },
 ];
 
+// Each of the 4 logos sits at a corner of the orbit ring.
+// CSS places them by rotating the containing arm from center then
+// translating outward, then counter-rotating the logo itself so it stays upright.
 export const NotableClients: React.FC = () => (
     <section className="notable-clients-section">
         <div className="container">
-            <div className="section-title-wrapper">
+            <div className="section-title-wrapper nc-title-wrapper">
                 <span className="section-subtitle">Trusted By</span>
                 <h2 className="section-title">Our Notable Clients</h2>
                 <p className="section-desc">
-                    We are proud to have served distinguished organizations across Ethiopia with quality
-                    aluminum fabrication and installation.
+                    Distinguished organisations across Ethiopia that trust KS Aluminum for quality
+                    fabrication and precision installation.
                 </p>
             </div>
 
-            <div className="clients-grid">
-                {clients.map((client) => (
-                    <div key={client.name} className="client-card">
-                        {/* Aluminum frame background – rotates on hover */}
-                        <div className="client-frame-bg">
-                            <img
-                                src="/Notable Clients/Aluminum frame.jpg"
-                                alt="Aluminum Frame"
-                                className="frame-img"
-                            />
+            {/* Orbital ring */}
+            <div className="nc-orbit-stage">
+                {/* Spinning ring */}
+                <div className="nc-orbit-ring">
+                    {clients.map((client, i) => (
+                        <div
+                            key={client.name}
+                            className="nc-orbit-arm"
+                            style={{ '--arm-index': i } as React.CSSProperties}
+                        >
+                            <div className="nc-logo-planet">
+                                <img src={client.logo} alt={client.name} className="nc-logo-img" />
+                                <span className="nc-logo-name">{client.name}</span>
+                            </div>
                         </div>
-                        {/* Logo sits on top */}
-                        <div className="client-logo-wrap">
-                            <img src={client.logo} alt={client.name} className="client-logo" />
-                        </div>
-                        <p className="client-name">{client.name}</p>
-                    </div>
-                ))}
+                    ))}
+                </div>
+
+                {/* Fixed centre hub */}
+                <div className="nc-center-hub">
+                    <img src={logoImg} alt="KS Aluminum" className="nc-hub-logo" />
+                    <span className="nc-hub-label">KS ALUMINUM</span>
+                </div>
             </div>
         </div>
     </section>
