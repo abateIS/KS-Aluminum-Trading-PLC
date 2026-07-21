@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Layers, ShieldCheck, Hammer, Sparkles, Sliders } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { NotableClients } from './NotableClients';
 
 // ── Animated counter hook ────────────────────────────────────────────────────
 function useCountUp(target: number, duration: number = 1800, trigger: boolean = false) {
@@ -109,6 +110,7 @@ export const About: React.FC = () => {
                     ))}
                 </div>
             </div>
+            <NotableClients />
         </section>
     );
 };

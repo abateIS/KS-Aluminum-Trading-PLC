@@ -72,6 +72,9 @@ export const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
                     <p style={{ fontSize: '0.85rem', color: '#cbd5e0', marginBottom: '0.5rem' }}>
                         📍 {t('footer_address')}
                     </p>
+                    <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)', marginBottom: '0.25rem' }}>
+                        TIN: <span style={{ color: 'var(--accent)', fontWeight: 700, letterSpacing: '0.05em' }}>0076860087</span>
+                    </p>
                     <p style={{ fontSize: '0.85rem', marginBottom: '1rem' }}>
                         <a href="https://maps.app.goo.gl/nSsft9tUcrxKGNRv9" target="_blank" rel="noopener noreferrer"
                             style={{ color: 'var(--accent-color)', textDecoration: 'underline' }}>

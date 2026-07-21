@@ -9,6 +9,7 @@ import { Gallery } from './components/Gallery';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { AIAssistant } from './components/AIAssistant';
+import { NotableClients } from './components/NotableClients';
 import './App.css';
 
 // ── Scroll-reveal wrapper ────────────────────────────────────────────────────
@@ -212,6 +213,7 @@ function App() {
         </div>
       </section>
 
+      <NotableClients />
       <Contact />
     </>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { NotableClients } from './NotableClients';
 
 interface ServiceCategory {
     id: string;
@@ -192,6 +193,7 @@ export const Services: React.FC = () => {
                     </div>
                 </div>
             </div>
+            <NotableClients />
         </section>
     );
 };

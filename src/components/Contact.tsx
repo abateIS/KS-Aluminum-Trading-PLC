@@ -107,6 +107,14 @@ export const Contact: React.FC = () => {
                                         </p>
                                     </div>
                                 </div>
+
+                                <div className="contact-link-item">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="info-icon"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z" /><path d="M9 7h6M9 11h6M9 15h4" /></svg>
+                                    <div>
+                                        <h4>Tax Identification Number (TIN)</h4>
+                                        <p style={{ fontWeight: 700, color: 'var(--accent)', fontSize: '1rem', letterSpacing: '0.05em' }}>0076860087</p>
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Social */}
