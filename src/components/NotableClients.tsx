@@ -2,27 +2,16 @@ import React from 'react';
 import logoImg from '../assets/logo.png';
 
 const clients = [
-    {
-        name: 'Ethiopian Air Force',
-        logo: '/Notable Clients/AirForce.webp',
-    },
-    {
-        name: 'Bishoftu City Administration',
-        logo: '/Notable Clients/Bishoftu-City-Adminstration.png',
-    },
-    {
-        name: 'Gedeb Construction',
-        logo: '/Notable Clients/Gedeb Construction.jpg',
-    },
-    {
-        name: 'Shimelis Getu Construction',
-        logo: '/Notable Clients/Shimelis Getu Construction.jpg',
-    },
+    { name: 'Ethiopian Air Force', logo: '/Notable Clients/AirForce.webp' },
+    { name: 'Bishoftu City Administration', logo: '/Notable Clients/Bishoftu-City-Adminstration.png' },
+    { name: 'Gedeb Construction', logo: '/Notable Clients/Gedeb Construction.jpg' },
+    { name: 'Shimelis Getu Construction', logo: '/Notable Clients/Shimelis Getu Construction.jpg' },
 ];
 
-// Each of the 4 logos sits at a corner of the orbit ring.
-// CSS places them by rotating the containing arm from center then
-// translating outward, then counter-rotating the logo itself so it stays upright.
+// Each planet uses the classic CSS orbit technique:
+//   transform: rotate(angle) translateX(radius) rotate(-angle)
+// This keeps the logo upright while it orbits the center.
+// Staggered animation-delay (-index * 14s/4) spreads logos evenly around the ring.
 export const NotableClients: React.FC = () => (
     <section className="notable-clients-section">
         <div className="container">
@@ -35,23 +24,21 @@ export const NotableClients: React.FC = () => (
                 </p>
             </div>
 
-            {/* Orbital ring */}
             <div className="nc-orbit-stage">
-                {/* Spinning ring */}
-                <div className="nc-orbit-ring">
-                    {clients.map((client, i) => (
-                        <div
-                            key={client.name}
-                            className="nc-orbit-arm"
-                            style={{ '--arm-index': i } as React.CSSProperties}
-                        >
-                            <div className="nc-logo-planet">
-                                <img src={client.logo} alt={client.name} className="nc-logo-img" />
-                                <span className="nc-logo-name">{client.name}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                {/* Decorative orbit ring */}
+                <div className="nc-orbit-ring" />
+
+                {/* 4 orbiting logos */}
+                {clients.map((client, i) => (
+                    <div
+                        key={client.name}
+                        className="nc-logo-planet"
+                        style={{ '--planet-index': i } as React.CSSProperties}
+                    >
+                        <img src={client.logo} alt={client.name} className="nc-logo-img" />
+                        <span className="nc-logo-name">{client.name}</span>
+                    </div>
+                ))}
 
                 {/* Fixed centre hub */}
                 <div className="nc-center-hub">

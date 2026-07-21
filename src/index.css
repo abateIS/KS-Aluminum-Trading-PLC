@@ -3716,7 +3716,7 @@ button {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   NOTABLE CLIENTS SECTION — Orbital Rotation
+   NOTABLE CLIENTS SECTION — Orbital Rotation (planet technique)
 ═══════════════════════════════════════════════════════════════ */
 .notable-clients-section {
   padding: 5rem 0 6rem;
@@ -3730,73 +3730,69 @@ button {
   margin-bottom: 4rem;
 }
 
-/* ── Orbital stage: the whole scene ─────────────────────────── */
+/* ── Orbital stage ───────────────────────────────────────────── */
 .nc-orbit-stage {
   position: relative;
-  width: 480px;
-  height: 480px;
+  width: 460px;
+  height: 460px;
   margin: 0 auto;
 }
 
-/* ── The spinning ring ───────────────────────────────────────── */
+/* ── Static decorative dashed ring ──────────────────────────── */
 .nc-orbit-ring {
   position: absolute;
-  inset: 0;
+  inset: 30px;
+  /* inset so logos sit ON the ring edge */
   border-radius: 50%;
-  border: 1.5px dashed rgba(229, 193, 88, 0.25);
-  animation: nc-ring-spin 14s linear infinite;
+  border: 1.5px dashed rgba(229, 193, 88, 0.3);
+  pointer-events: none;
 }
 
-@keyframes nc-ring-spin {
-  from {
-    transform: rotate(0deg);
-  }
+/* ── Each logo planet ────────────────────────────────────────── */
+/*
+   Classic CSS orbit pattern:
+     transform: rotate(angle) translateX(radius) rotate(-angle)
+   1. Rotate the origin → planet arm swings outward
+   2. translateX → move planet to orbit radius
+   3. Counter-rotate → logo stays upright
 
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ── Each arm: placed from centre, rotated by 90° × index ───── */
-.nc-orbit-arm {
+   Stagger via negative animation-delay:
+     delay = --planet-index * -(period / 4)   = --planet-index * -5s
+   This spreads the 4 planets evenly (0°, 90°, 180°, 270°) at t=0.
+*/
+.nc-logo-planet {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 200px;
-  height: 0;
-  transform-origin: 0 0;
-  transform: rotate(calc(var(--arm-index) * 90deg));
-}
-
-/* ── The logo planet at the tip of the arm ───────────────────── */
-.nc-logo-planet {
-  position: absolute;
-  right: -60px;
-  top: -60px;
   width: 120px;
   height: 120px;
-  animation: nc-logo-counter 14s linear infinite;
+  margin-top: -60px;
+  margin-left: -60px;
+  animation: nc-planet-orbit 20s linear infinite;
+  /* stagger: index 0→0s, 1→-5s, 2→-10s, 3→-15s */
+  animation-delay: calc(var(--planet-index) * -5s);
 }
 
-@keyframes nc-logo-counter {
+@keyframes nc-planet-orbit {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg) translateX(170px) rotate(0deg);
   }
 
   to {
-    transform: rotate(-360deg);
+    transform: rotate(360deg) translateX(170px) rotate(-360deg);
   }
 }
 
+/* ── Logo image ──────────────────────────────────────────────── */
 .nc-logo-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.93);
   padding: 10px;
   box-shadow:
-    0 0 0 3px rgba(229, 193, 88, 0.5),
+    0 0 0 3px rgba(229, 193, 88, 0.55),
     0 8px 30px rgba(0, 0, 0, 0.55);
   display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -3805,23 +3801,24 @@ button {
 .nc-logo-planet:hover .nc-logo-img {
   transform: scale(1.12);
   box-shadow:
-    0 0 0 4px var(--accent),
-    0 12px 40px rgba(229, 193, 88, 0.35);
+    0 0 0 5px var(--accent),
+    0 12px 40px rgba(229, 193, 88, 0.4);
 }
 
+/* ── Client name label below each logo ──────────────────────── */
 .nc-logo-name {
   position: absolute;
-  top: 128px;
+  top: 126px;
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   letter-spacing: 0.02em;
   text-align: center;
   pointer-events: none;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
 }
 
 /* ── Centre hub ──────────────────────────────────────────────── */
@@ -3836,8 +3833,8 @@ button {
   background: radial-gradient(circle at 40% 35%, #1a3a6b, #061530);
   border: 3px solid rgba(229, 193, 88, 0.55);
   box-shadow:
-    0 0 0 8px rgba(229, 193, 88, 0.07),
-    0 10px 40px rgba(0, 0, 0, 0.6);
+    0 0 0 10px rgba(229, 193, 88, 0.06),
+    0 10px 40px rgba(0, 0, 0, 0.65);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3847,14 +3844,14 @@ button {
 }
 
 .nc-hub-logo {
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
 }
 
 .nc-hub-label {
-  font-size: 0.52rem;
+  font-size: 0.5rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--accent);
@@ -3863,35 +3860,41 @@ button {
 }
 
 /* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 600px) {
+@media (max-width: 560px) {
   .nc-orbit-stage {
-    width: 320px;
-    height: 320px;
-  }
-
-  .nc-orbit-arm {
-    width: 130px;
+    width: 310px;
+    height: 310px;
   }
 
   .nc-logo-planet {
-    right: -40px;
-    top: -40px;
     width: 80px;
     height: 80px;
+    margin-top: -40px;
+    margin-left: -40px;
+  }
+
+  @keyframes nc-planet-orbit {
+    from {
+      transform: rotate(0deg) translateX(110px) rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg) translateX(110px) rotate(-360deg);
+    }
   }
 
   .nc-logo-name {
-    top: 86px;
-    font-size: 0.62rem;
+    top: 84px;
+    font-size: 0.58rem;
   }
 
   .nc-center-hub {
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
   }
 
   .nc-hub-logo {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
 }
