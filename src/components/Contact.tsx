@@ -17,7 +17,7 @@ export const Contact: React.FC = () => {
         const formattedText = `*New Website Inquiry*\n\n*Name:* ${name}\n*Contact:* ${contact}\n\n*Message:*\n${message}`;
 
         const BOT_TOKEN = "8450145686:AAESAPdnDPpMgVEkHSaclRI66EScEVPOGAU";
-        const CHAT_ID = "886302526";
+        const CHAT_ID = "-1004458466812";
 
         try {
             const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
