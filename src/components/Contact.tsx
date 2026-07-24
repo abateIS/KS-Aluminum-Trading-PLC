@@ -80,7 +80,7 @@ export const Contact: React.FC = () => {
                                     <div>
                                         <h4>{t('contact_phone_label')}</h4>
                                         <p><a href="tel:+251912253424" className="hover-accent">📞 0912 253 424</a></p>
-                                        <p><a href="tel:+251910114323" className="hover-accent">📞 0910 114 323</a></p>
+                                        <p><a href="tel:+251911046073" className="hover-accent">📞 0911 046 073</a></p>
                                     </div>
                                 </div>
 

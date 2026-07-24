@@ -15,6 +15,8 @@ interface ProductsProps {
     onNavigate: (pageId: string) => void;
 }
 
+const GENERAL_DISCLAIMER_TEXT = "Looking for something else? The items listed above are just our most popular selections. We carry a wide range of additional profiles, glass dimensions, custom colors, hardware, and architectural toolings in our warehouse. Just contact us for any specific requirements!";
+
 export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
     const { t } = useLanguage();
     const [activeCategory, setActiveCategory] = useState<string>('import-profile');
@@ -27,10 +29,12 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
             subtitle: 'Anodized & Electrophoresis Finishes',
             imageUrl: '/Service page images/Aluminum Profioles.jpg',
             items: [
-                { label: 'Black Profile' },
-                { label: 'Silver Profile' },
-                { label: 'Bronze Profile' },
-                { label: 'Coffee Electrophoresis Champagne' },
+                { label: 'Import Profile - Matte Black', note: 'Jet Black, Matte Finish' },
+                { label: 'Import Profile - Classic Silver', note: 'Bright & Matte Silver' },
+                { label: 'Import Profile - Architectural Bronze', note: 'Dark & Light Bronze Options' },
+                { label: 'Import Profile - Champagne', note: 'Coffee Electrophoresis Champagne' },
+                { label: 'Import Profile - Wood Grain', note: 'Oak, Walnut & Cherry finishes' },
+                { label: 'Heavy Curtain Wall Series', note: 'Mullion & Transom systems' },
             ],
             color: '#1a3a5c',
         },
@@ -41,14 +45,9 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
             subtitle: 'Locally Extruded — Multiple Finishes',
             imageUrl: '/Service page images/Local Aluminum.jpeg',
             items: [
-                { label: 'Black' },
-                { label: 'Grey' },
-                { label: 'Ivory' },
-                { label: 'Bronze' },
-                { label: 'Mat Coffee' },
-                { label: 'White' },
-                { label: 'Coffee Shine' },
-                { label: 'Silver' },
+                { label: 'Standard Windows/Doors Profile', note: 'Black, Grey, Ivory, Bronze, Mat Coffee, White, Silver' },
+                { label: 'Local Office Partition Profiles', note: 'Lightweight structural dividers' },
+                { label: 'Local Aluminum Louver Blades', note: 'Fixed and adjustable ventilation blades' },
             ],
             color: '#2d5016',
         },
@@ -59,12 +58,12 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
             subtitle: 'Clear, Tinted & Reflective Options',
             imageUrl: '/Service page images/Structural & Decorative Glass.webp',
             items: [
-                { label: 'Clear Glass', note: '4mm, 5mm, 6mm, 10mm & 12mm' },
-                { label: 'Grey Glass', note: '5mm' },
-                { label: 'Dark Grey Reflector', note: '5mm' },
-                { label: 'Brown/Tea Glass', note: '5mm, 6mm' },
-                { label: 'Light Blue Reflective', note: '5mm' },
-                { label: 'Ocean Blue Reflective', note: '5mm' },
+                { label: 'Clear Architectural Float Glass', note: '4mm, 5mm, 6mm, 8mm, 10mm, 12mm' },
+                { label: 'Toned Grey & Dark Grey Glass', note: '5mm, 6mm, 8mm' },
+                { label: 'Bronze & Blue Tinted Glass', note: '5mm, 6mm' },
+                { label: 'Ocean Blue Reflective Glass', note: '5mm, 6mm' },
+                { label: 'Tempered / Toughened Safety Glass', note: '6mm, 8mm, 10mm, 12mm' },
+                { label: 'Frosted & Patterned Glass', note: '4mm, 5mm, 6mm' },
             ],
             color: '#0a3d62',
         },
@@ -75,9 +74,10 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
             subtitle: 'ACP Cladding — Weatherproof Facades',
             imageUrl: '/Service page images/Aluminium Composite Panel.jpg',
             items: [
-                { label: 'Double F Cladding', note: 'Dual-Facing PE Core' },
-                { label: 'Single F Cladding', note: 'Single-Facing PE Core' },
-                { label: 'PE & Fire-Retardant Cores' },
+                { label: 'Standard Double F Cladding', note: 'Dual-Facing PE Core. Silver, White, Blue, Red, Gold, Black' },
+                { label: 'Fire-Retardant ACP (FR Grade)', note: 'B1 & A2 Fire Rating compliance' },
+                { label: 'Wood/Marble Texture ACP', note: 'Printed PE coatings simulating natural textures' },
+                { label: 'Single F Cladding', note: 'Single-Facing PE Core for quick interior works' },
             ],
             color: '#4a235a',
         },
@@ -88,10 +88,11 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
             subtitle: 'Hardware, Locks & Gaskets',
             imageUrl: '/Service page images/Aluminium Accessories.webp',
             items: [
-                { label: 'Heavy-Duty Hinges & Pivots' },
-                { label: 'Friction Stays & Lock Handles' },
-                { label: 'Dual-Wheel Roller Assemblies' },
-                { label: 'EPDM Weather Gaskets' },
+                { label: 'Window & Door Locking Gears', note: 'Multi-point espagnolette & crescent locks' },
+                { label: 'Friction Stays & Heavy Hinges', note: 'Grade 304 Stainless Steel' },
+                { label: 'Structural Silicones & Gaskets', note: 'Neutral cure sealant & EPDM rubbers' },
+                { label: 'Sliding Door & Window Rollers', note: 'Nylon & Brass adjustable wheels' },
+                { label: 'Spider Glass Routels & Fittings', note: 'For frameless canopy/facade glazing' },
             ],
             color: '#7b3f00',
         },
@@ -102,9 +103,9 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
             subtitle: 'Balcony & Staircase Systems',
             imageUrl: '/Service page images/Handrails.webp',
             items: [
-                { label: 'Glass-Secured Balustrades' },
-                { label: 'Aluminium Framework Rails' },
-                { label: 'Balcony Safety Railings' },
+                { label: 'Frameless Glass Balustrade Bases', note: 'Heavy duty aluminum U-channels' },
+                { label: 'Aluminium Framework Rails', note: 'Corrosion resistant top rails' },
+                { label: 'Balcony Safety Railings', note: 'Post and rail systems' },
             ],
             color: '#1a252f',
         },
@@ -115,11 +116,24 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
             subtitle: 'Polished & Brushed Satin Finishes',
             imageUrl: '/Service page images/Stainless Steel.jpg',
             items: [
-                { label: 'Polished Chrome Mirror Sheets' },
-                { label: 'Brushed Satin Pipes' },
-                { label: 'Grade 304 & 316 Components' },
+                { label: 'Stainless Steel Handrail Pipes', note: 'Polished chrome mirror and satin finishes' },
+                { label: 'Stainless Steel Glass Standoffs', note: 'Pins for frameless staircase glass' },
+                { label: 'Grade 304 & 316 Components', note: 'Industrial structural standard' },
             ],
             color: '#2c3e50',
+        },
+        {
+            id: 'others',
+            emoji: '🔨',
+            title: 'Other Products & Toolings',
+            subtitle: 'Fabrication Machinery & Supplies',
+            imageUrl: '/gallery/12.jpg',
+            items: [
+                { label: 'Aluminum Cutting Machinery', note: 'Double mitre chop saws & routers' },
+                { label: 'TCT Saw Blades & Drilling Bits', note: 'Tungsten carbide extrusions bits' },
+                { label: 'Glass Installation Suction Lifters', note: 'Heavy-duty vacuum cups' },
+            ],
+            color: '#4e5659',
         },
     ];
 
@@ -198,6 +212,14 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
                     </div>
                 </div>
 
+                {/* General Disclaimer */}
+                <div className="products-disclaimer" style={{ marginTop: '2rem', marginBottom: '2rem', padding: '1.25rem 1.5rem', background: 'rgba(229, 193, 88, 0.08)', borderRadius: '12px', borderLeft: '4px solid var(--accent)' }}>
+                    <p style={{ margin: 0, fontSize: '0.92rem', color: '#e2e8f0', lineHeight: 1.6 }}>
+                        <strong style={{ color: 'var(--text-white)' }}>Looking for something specific? </strong>
+                        {GENERAL_DISCLAIMER_TEXT}
+                    </p>
+                </div>
+
                 {/* All categories thumbnail strip */}
                 <div className="products-thumb-strip">
                     {categories.map(cat => (
@@ -220,3 +242,4 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
         </section>
     );
 };
+

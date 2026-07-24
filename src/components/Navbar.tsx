@@ -86,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo, activeSection }) => 
                         <Phone size={16} className="phone-anim" />
                         <div className="phone-numbers-stack">
                             <a href="tel:+251912253424" className="phone-stack-link">0912 253 424</a>
-                            <a href="tel:+251910114323" className="phone-stack-link">0910 114 323</a>
+                            <a href="tel:+251911046073" className="phone-stack-link">0911 046 073</a>
                         </div>
                     </div>
                     <button
@@ -130,9 +130,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo, activeSection }) => 
                                 <Phone size={18} />
                                 <span>{t('nav_call_us')}: 0912 253 424</span>
                             </a>
-                            <a href="tel:+251910114323" className="mobile-phone-cta btn btn-outline">
+                            <a href="tel:+251911046073" className="mobile-phone-cta btn btn-outline">
                                 <Phone size={18} />
-                                <span>{t('nav_call_us')}: 0910 114 323</span>
+                                <span>{t('nav_call_us')}: 0911 046 073</span>
                             </a>
                         </li>
                         <li className="mobile-cta-li" style={{ display: 'flex', gap: '0.75rem' }}>

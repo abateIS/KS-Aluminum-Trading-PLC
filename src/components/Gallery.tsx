@@ -20,6 +20,8 @@ const galleryItems: GalleryItem[] = [
     { id: 'g6', src: '/gallery/17.jpg', thumb: '/gallery/17.jpg', caption: 'Composite Panel Cladding' },
     { id: 'g7', src: '/gallery/18.jpg', thumb: '/gallery/18.jpg', caption: 'Polished Handrails Installation' },
     { id: 'g8', src: '/gallery/19.jpg', thumb: '/gallery/19.jpg', caption: 'Structural Glass & Accessories Supply' },
+    { id: 'g13', src: '/gallery/20.jpg', thumb: '/gallery/20.jpg', caption: 'Aluminum Fabrication & Assembly' },
+    { id: 'g14', src: '/gallery/21.jpg', thumb: '/gallery/21.jpg', caption: 'On-Site Installation Works' },
     { id: 'g9', src: '/gallery/11.jpg', thumb: '/gallery/11.jpg', caption: 'KS Aluminum Office & Work Area' },
 ];
 

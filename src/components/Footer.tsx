@@ -66,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
                             <p>{t('nav_call_us')}:</p>
                             <a href="tel:+251912253424" className="footer-phone-link">📞 0912 253 424</a>
                             <br />
-                            <a href="tel:+251910114323" className="footer-phone-link">📞 0910 114 323</a>
+                            <a href="tel:+251911046073" className="footer-phone-link">📞 0911 046 073</a>
                         </div>
                     </div>
                     <p style={{ fontSize: '0.85rem', color: '#cbd5e0', marginBottom: '0.5rem' }}>

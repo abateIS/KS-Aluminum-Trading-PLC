@@ -43,9 +43,9 @@ const en: Record<string, string> = {
     nav_call_us: 'Call Us',
 
     // Hero
-    hero_tag: 'Ethiopia\'s Premier Aluminium Supplier',
-    hero_title: 'Precision Aluminium & Glass for Modern Architecture',
-    hero_subtitle: 'Supplying premium imported & locally-extruded aluminium profiles, structural glass, composite panels, and specialist accessories to builders and contractors across Ethiopia.',
+    hero_tag: 'Ethiopia\'s Premier Aluminum Supplier',
+    hero_title: 'Precision Aluminum & Glass for Modern Architecture',
+    hero_subtitle: 'Supplying premium imported & locally-extruded aluminum profiles, structural glass, composite panels, and specialist accessories to builders and contractors across Ethiopia.',
     hero_cta_products: 'Browse Products',
     hero_cta_gallery: 'View Gallery',
 

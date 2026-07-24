@@ -194,6 +194,7 @@ function App() {
               { src: '/gallery/Curtain wall.webp', alt: 'Curtain Wall Project' },
               { src: '/gallery/Composite Cladding.jpg', alt: 'Composite Cladding' },
               { src: '/gallery/Aluminum extrusion.jpeg', alt: 'Aluminium Extrusion' },
+              { src: '/gallery/21.jpg', alt: 'On-Site Installation Works' },
             ].map((img, i) => (
               <Reveal key={i} direction="up" delay={i * 120}>
                 <div className="gallery-teaser-card">
