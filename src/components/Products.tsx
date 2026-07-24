@@ -203,12 +203,23 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
                             ))}
                         </ul>
 
-                        <button
-                            className="btn btn-primary product-cta-btn"
-                            onClick={() => onNavigate('contact')}
-                        >
-                            {t('prod_contact_us')}
-                        </button>
+                        <div className="product-detail-actions" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.5rem' }}>
+                            <button
+                                className="btn btn-outline product-cta-btn"
+                                onClick={() => {
+                                    alert("Contact us for custom and other Aluminum product");
+                                    window.open("https://t.me/+zrU_XuTTzBkzNzA0", "_blank");
+                                }}
+                            >
+                                More Products
+                            </button>
+                            <button
+                                className="btn btn-primary product-cta-btn"
+                                onClick={() => onNavigate('contact')}
+                            >
+                                {t('prod_contact_us')}
+                            </button>
+                        </div>
                     </div>
                 </div>
 

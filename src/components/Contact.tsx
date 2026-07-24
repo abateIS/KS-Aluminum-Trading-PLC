@@ -16,8 +16,16 @@ export const Contact: React.FC = () => {
         setTimeout(() => {
             setIsSending(false);
             setSuccess(true);
+
+            // Format message for Telegram
+            const formattedText = `*New Website Inquiry*\n\n*Name:* ${name}\n*Contact:* ${contact}\n\n*Message:*\n${message}`;
+            const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/+zrU_XuTTzBkzNzA0')}&text=${encodeURIComponent(formattedText)}`;
+
+            // Open Telegram
+            window.open(telegramShareUrl, '_blank');
+
             setName(''); setContact(''); setMessage('');
-        }, 1500);
+        }, 800);
     };
 
     return (
