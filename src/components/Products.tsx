@@ -207,10 +207,7 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
                             <button
                                 className="btn product-cta-btn"
                                 style={{ backgroundColor: '#061530', color: '#ffffff', borderColor: '#061530' }}
-                                onClick={() => {
-                                    alert("Contact us for custom and other Aluminum product");
-                                    window.open("https://t.me/+zrU_XuTTzBkzNzA0", "_blank");
-                                }}
+                                onClick={() => onNavigate('contact')}
                             >
                                 More Products
                             </button>

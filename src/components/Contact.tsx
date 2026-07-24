@@ -14,7 +14,7 @@ export const Contact: React.FC = () => {
         e.preventDefault();
         setIsSending(true);
 
-        const formattedText = `*New Website Inquiry*\n\n*Name:* ${name}\n*Contact:* ${contact}\n\n*Message:*\n${message}`;
+        const formattedText = `*New Customer Request*\n\n*Name:* ${name}\n*Contact:* ${contact}\n\n*Message:*\n${message}`;
 
         const BOT_TOKEN = "8450145686:AAESAPdnDPpMgVEkHSaclRI66EScEVPOGAU";
         const CHAT_ID = "-1004458466812";
