@@ -16,15 +16,8 @@ export const Contact: React.FC = () => {
 
         const formattedText = `*New Website Inquiry*\n\n*Name:* ${name}\n*Contact:* ${contact}\n\n*Message:*\n${message}`;
 
-        // 🚨 IMPORTANT: These placeholders MUST be replaced with real Telegram Bot credentials 🚨
-        const BOT_TOKEN = "PLACEHOLDER_BOT_TOKEN";
-        const CHAT_ID = "PLACEHOLDER_CHAT_ID";
-
-        if (BOT_TOKEN === "PLACEHOLDER_BOT_TOKEN") {
-            alert("SYSTEM NOTICE: The Telegram Bot Token has not been set yet. The message cannot be sent until the developer provides the Token.");
-            setIsSending(false);
-            return;
-        }
+        const BOT_TOKEN = "8450145686:AAESAPdnDPpMgVEkHSaclRI66EScEVPOGAU";
+        const CHAT_ID = "886302526";
 
         try {
             const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
