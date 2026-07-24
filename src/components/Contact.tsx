@@ -10,22 +10,46 @@ export const Contact: React.FC = () => {
     const [isSending, setIsSending] = useState<boolean>(false);
     const [success, setSuccess] = useState<boolean>(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSending(true);
-        setTimeout(() => {
+
+        const formattedText = `*New Website Inquiry*\n\n*Name:* ${name}\n*Contact:* ${contact}\n\n*Message:*\n${message}`;
+
+        // 🚨 IMPORTANT: These placeholders MUST be replaced with real Telegram Bot credentials 🚨
+        const BOT_TOKEN = "PLACEHOLDER_BOT_TOKEN";
+        const CHAT_ID = "PLACEHOLDER_CHAT_ID";
+
+        if (BOT_TOKEN === "PLACEHOLDER_BOT_TOKEN") {
+            alert("SYSTEM NOTICE: The Telegram Bot Token has not been set yet. The message cannot be sent until the developer provides the Token.");
             setIsSending(false);
-            setSuccess(true);
+            return;
+        }
 
-            // Format message for Telegram
-            const formattedText = `*New Website Inquiry*\n\n*Name:* ${name}\n*Contact:* ${contact}\n\n*Message:*\n${message}`;
-            const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/+zrU_XuTTzBkzNzA0')}&text=${encodeURIComponent(formattedText)}`;
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: formattedText,
+                    parse_mode: 'Markdown',
+                }),
+            });
 
-            // Open Telegram
-            window.open(telegramShareUrl, '_blank');
-
-            setName(''); setContact(''); setMessage('');
-        }, 800);
+            if (response.ok) {
+                setIsSending(false);
+                setSuccess(true);
+                setName(''); setContact(''); setMessage('');
+            } else {
+                alert("Sorry, there was an error sending your message. Please try again.");
+                setIsSending(false);
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Network error. Please try again later.");
+            setIsSending(false);
+        }
     };
 
     return (
